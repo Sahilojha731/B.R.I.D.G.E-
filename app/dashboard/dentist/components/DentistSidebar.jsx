@@ -1,10 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { navItems, currentUser } from "../data/mockData";
-import { getNavIcon, LogOutIcon, MonitorIcon, HelpCircleIcon, SwitchIcon } from "./Icons";
+import { SwitchIcon, MonitorIcon, HelpCircleIcon, LogOutIcon, getNavIcon } from "../../components/Icons";
 
-export default function Sidebar({ isOpen, onClose }) {
+const navItems = [
+  { label: "Dashboard", icon: "grid", active: true },
+  { label: "Appointments", icon: "calendar" },
+  { label: "Patients", icon: "user" },
+  { label: "Consultations", icon: "video" },
+  { label: "Consultation History", icon: "clock" },
+  { label: "Dental Visualizations", icon: "eye" },
+  { label: "Profile", icon: "user" },
+  { label: "Settings", icon: "settings" },
+];
+
+export default function DentistSidebar({ isOpen, onClose }) {
   return (
     <>
       {/* Mobile overlay */}
@@ -15,7 +25,6 @@ export default function Sidebar({ isOpen, onClose }) {
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={`
           fixed top-0 left-0 h-full z-30 flex flex-col
@@ -38,30 +47,29 @@ export default function Sidebar({ isOpen, onClose }) {
           </div>
         </div>
 
-        {/* Active Workspace / User Info */}
+        {/* Active Workspace / Dentist Info */}
         <div className="px-4 py-3 border-b border-white/10">
           <div className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 font-medium">
             Active Workspace
           </div>
           <div className="mb-2">
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-400 border border-teal-500/30 font-medium">
-              Patient
+            <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 font-semibold">
+              Dentist
             </span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-full bg-slate-600 flex items-center justify-center text-[11px] font-bold text-white flex-shrink-0">
-              {currentUser.avatarInitials}
+              DR
             </div>
             <div className="min-w-0">
-              <div className="text-sm font-medium text-white truncate">{currentUser.name}</div>
-              <div className="text-[10px] text-slate-400">{currentUser.id}</div>
+              <div className="text-sm font-medium text-white truncate">Dr. Ananya Mehta</div>
+              <div className="text-[10px] text-slate-400">BDS, MDS • Operatory 02</div>
             </div>
           </div>
-          <Link href="/dashboard/dentist">
-            <button className="mt-2 flex items-center gap-1.5 text-[11px] text-slate-400 hover:text-teal-400 transition-colors">
-              <SwitchIcon className="w-3 h-3" />
-              Switch to Dentist View
-            </button>
+          {/* Switch back to patient view */}
+          <Link href="/dashboard" className="mt-2.5 flex items-center gap-1.5 text-[11px] text-slate-300 hover:text-teal-400 transition-colors border border-white/15 rounded-lg px-2.5 py-1.5 bg-white/5">
+            <SwitchIcon className="w-3 h-3" />
+            Switch to Patient View
           </Link>
         </div>
 
@@ -74,7 +82,7 @@ export default function Sidebar({ isOpen, onClose }) {
                   className={`
                     w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all
                     ${item.active
-                      ? "bg-teal-600 text-white font-medium"
+                      ? "bg-teal-700 text-white font-medium"
                       : "text-slate-300 hover:bg-white/10 hover:text-white"}
                   `}
                 >

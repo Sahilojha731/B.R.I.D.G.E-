@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { currentUser } from "../data/mockData";
 import { BellIcon } from "./Icons";
 
@@ -46,9 +47,9 @@ export default function TopBar({ onMenuToggle }) {
         {/* Patient / Dentist toggle */}
         <div className="flex items-center rounded-full border border-slate-200 overflow-hidden text-xs">
           <button className="px-3 py-1.5 bg-teal-600 text-white font-medium">Patient</button>
-          <button className="px-3 py-1.5 text-slate-600 hover:bg-slate-50 transition-colors">
+          <Link href="/dashboard/dentist" className="px-3 py-1.5 text-slate-600 hover:bg-slate-50 transition-colors">
             Dentist
-          </button>
+          </Link>
         </div>
 
         {/* Bell */}

@@ -2,10 +2,10 @@
 // Replace these with real API calls when the backend is ready.
 
 export const currentUser = {
-  name: "Sakshi Kulkarni",
+  name: "Sakshi Pawar",
   id: "ID: #PT-80621",
   role: "Patient",
-  avatarInitials: "SK",
+  avatarInitials: "SP",
 };
 
 export const upcomingConsultation = {
